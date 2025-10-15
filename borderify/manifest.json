@@ -1,23 +1,26 @@
 {
-  "manifest_version": 2,
-  "name": "Borderify Antivírus",
+  "manifest_version": 3,
+  "name": "Borderify Antivirus",
   "version": "1.2",
   "description": "Extensão antivírus com botão de ativar/desativar, alerta de sites perigosos, phishing e scripts maliciosos.",
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/border-48.png",
+    "128": "icons/border-128.png"
+  },
+  "permissions": ["tabs", "activeTab", "storage", "scripting"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/border-48.png"
+    }
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["borderify/borderify.js"]
+      "js": ["borderify.js"]
     }
-  ],
-  "permissions": ["tabs", "activeTab", "storage"],
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "icons/border-48.png"
-  },
-  "background": {
-    "scripts": ["background.js"]
-  }
+  ]
 }
